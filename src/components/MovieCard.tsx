@@ -1,3 +1,4 @@
+import React from 'react';
 import { Movie } from '../interfaces/Movie';
 import {Link} from 'react-router-dom';
 
@@ -6,13 +7,18 @@ interface MovieCardProps {
 }
 
 const MovieCard = ({ movie }: MovieCardProps) => {
+    
+    const handleError =(e : React.SyntheticEvent<HTMLImageElement, Event>)=>{
+        e.currentTarget.src = 'https://via.placeholder.com/400';
+    }
+
     return (
         <Link to={`/compare/${movie.title}`} state={movie} className='movie'>
             <div>
                 <p>{movie.year}</p>
             </div>
             <div>
-                <img src={movie.poster !== 'N/A' ? movie.poster : 'https://via.placeholder.com/400'}></img>
+                <img src={movie.poster !== 'N/A' ? movie.poster : 'https://via.placeholder.com/400'} onError={handleError}></img>
             </div>
             <div>
                 <div className='rating-price-row'>

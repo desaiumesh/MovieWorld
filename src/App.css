@@ -41,7 +41,7 @@ h1 {
 
 .search {
   width: 71%;
-  margin: 4rem 0 2rem;
+  margin: 1rem 0 0rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,7 +98,7 @@ h1 {
   height: 460px;
   margin: 1.5rem;
   position: relative;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
   border: none;
   border-color: #1c1d1f;
@@ -179,7 +179,7 @@ h1 {
   width: 100%;
   position: relative;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   padding-top: 20px;
 }
@@ -191,7 +191,7 @@ h1 {
 .movie__backdrop {
   width: 100%;
   height: 500px;
-  object-fit:cover;
+  object-fit: cover;
   object-position: 0 35%;
 }
 
@@ -207,7 +207,7 @@ h1 {
 }
 
 .movie__poster {
-  width:300px;
+  width: 300px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.86) 0px 22px 40px 6px;
 }
@@ -217,17 +217,17 @@ h1 {
   display: flex;
   flex-direction: column;
   height: 450px;
-  justify-content:space-between ;
+  justify-content: space-between;
 }
 
-.movie__detailRightTop > div{
+.movie__detailRightTop > div {
   text-shadow: 0px 0px 5px #000000;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .movie__name {
   font-weight: 600;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .movie__voteCount {
@@ -239,12 +239,11 @@ h1 {
 }
 
 .movie__genre {
-  padding: .5rem;
+  padding: 0.5rem;
   border: 2px solid white;
   border-radius: 20px;
   margin-right: 1rem;
 }
-
 
 .movie__detailRightBottom {
   margin: 2rem 0;
@@ -288,28 +287,30 @@ h1 {
 }
 
 .movie__homeButton {
-  background-color:rgb(255, 0, 0);
-  
+  background-color: rgb(255, 0, 0);
+}
+
+.movieProvider_container{
+  width: 100%;
 }
 
 .movieProvider {
   width: 100%;
   position: relative;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
-
 .movie_Provider {
-  padding: 50px;
+  padding: 40px;
   width: 75%;
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 1.5rem;
+  margin: 1rem;
   border-radius: 10px;
   border: 1px solid #e4e8f0;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -317,7 +318,7 @@ h1 {
   justify-content: space-between;
 }
 
-.movieProvider h2{
+.movieProvider h2 {
   font-size: 2rem;
   letter-spacing: 0.9px;
   background: linear-gradient(
@@ -330,43 +331,106 @@ h1 {
   -webkit-text-fill-color: transparent;
   width: fit-content;
 }
-
-
-@media screen and (max-width: 600px) {
-  .app {
-    padding: 4rem 2rem;
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 900px) {
+  .movie__detail {
+    flex-direction: column;
   }
 
-  .search {
-    padding: 1rem 1.75rem;
+  .movie__detailLeft {
+    margin: 0 0 20px 0;
+  }
+
+  .movie__poster {
     width: 100%;
+    max-width: 300px;
   }
 
-  .search input {
-    font-size: 1rem;
+  .movie__detailRight {
+    width: 100%;
+    align-items: center;
   }
 
-  .search img {
-    width: 20px;
-    height: 20px;
+  .movie__detailRightTop > div {
+    text-align: center;
+  }
+
+  .movie__detailRightBottom {
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 400px) {
-  .app {
-    padding: 4rem 1rem;
+@media screen and (max-width: 600px) {
+  .movie__detail {
+    flex-direction: column; 
   }
 
-  h1 {
-    font-size: 2rem;
+  .movie__detailLeft {
+    margin-right: 0; 
+    margin-bottom: 20px;
+  }
+
+  .movie__poster {
+    width: 100%; 
+    max-width: 300px; 
+  }
+
+  .movie__detailRight {
+    width: 100%; 
+    align-items: center; 
+  }
+
+  .movieProvider_container{
+    width: 100%;
+    margin-top: 80px;
+  }
+
+  .movieProvider h2 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Media Query for extra small screens */
+@media screen and (max-width: 400px) {
+  .app {
+    padding: 4rem 1rem; 
   }
 
   .container {
-    margin-top: 2rem;
+    margin-top: 2rem; 
   }
 
   .movie {
-    width: 100%;
-    margin: 1rem;
+    width: 100%; 
+    margin: 1rem 0; 
+  }
+
+  .movie__detailLeft {
+    margin-right: 0; 
+    margin-bottom: 20px; 
+  }
+
+  .movie__poster {
+    width: 100%; 
+    max-width: 300px; 
+  }
+
+  .movie__detailRight {
+    width: 100%; 
+    align-items: center; 
+  }
+
+  .movie__genre {
+    padding: 0.1rem;
+  }
+  
+  .movieProvider_container{
+    width: 100%; 
+    margin-top: 200px;
+  }
+
+  .movieProvider h2 {
+    font-size: 0.9rem;
+    letter-spacing: 0.9px;
   }
 }

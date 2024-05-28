@@ -14,10 +14,5 @@ export const router = createBrowserRouter([
         path:"/compare/:title",
         element: <Compare/>,
         errorElement : <Error />
-    },
-    {
-        path:"/movie",
-        element: <Movie/>,
-        errorElement : <Error />
     }
 ]);

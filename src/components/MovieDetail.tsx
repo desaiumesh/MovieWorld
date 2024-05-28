@@ -8,12 +8,16 @@ interface MovieDetailProps {
 
 
 const MovieDetail = ({movie} : MovieDetailProps) => {
+    const handleError =(e : React.SyntheticEvent<HTMLImageElement, Event>)=>{
+        e.currentTarget.src = 'https://via.placeholder.com/400';
+    }
+
     return (
         <div className="movieDetail">
             <div className="movie__detail">
                 <div className="movie__detailLeft">
                     <div className="movie__posterBox">
-                        <img className="movie__poster" src={movie.poster} />
+                        <img className="movie__poster" src={movie.poster} onError={handleError} />
                     </div>
                 </div>
                 <div className="movie__detailRight">
@@ -37,7 +41,7 @@ const MovieDetail = ({movie} : MovieDetailProps) => {
                         <div className="synopsisText">Plot</div>
                         <div>{movie.plot}</div>
                     </div>
-                    <div className="movie__releaseDate">{"Casts : " + movie.actors}</div>
+                    <div className="movie__releaseDate">{"Cast : " + movie.actors}</div>
                     <div className="movie__releaseDate">{"Director : " + movie.director}</div>
                 </div>
             </div>

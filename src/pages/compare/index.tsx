@@ -4,12 +4,15 @@ import { Movie } from '../../interfaces/Movie';
 import apiService from '../../services/apiService';
 import MovieDetail from '../../components/MovieDetail';
 import MovieProvider from '../../components/MovieProvider';
+import Loading from '../../components/Loading';
 
 const Compare = () => {
 
     const { title } = useParams<{ title: string }>();
     const movie = useLocation().state as Movie;
     const [allmovies, setAllMovies] = useState<Movie[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         getMoviesFromProviders();
@@ -17,14 +20,26 @@ const Compare = () => {
 
     const getMoviesFromProviders = async () => {
 
-        const data = await apiService.get<any>(`/movie/${title}`);
-        const newMoviesArray = [movie];
+        try {
+            setLoading(true);
+            const data = await apiService.get<any>(`/movie/${title}`);
+            const newMoviesArray = [movie];
 
-        data.length > 0 ? setAllMovies(data) : setAllMovies(newMoviesArray);
+            data.length > 0 ? setAllMovies(data) : setAllMovies(newMoviesArray);
+            setLoading(false);
+
+        } catch (error) {
+            setError('Error fetching data');
+            setLoading(false);
+        }
     };
 
-    if (!allmovies) {
-        return <div>Loading...</div>;
+    if (loading) {
+        return <Loading />;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
     }
 
     return (
@@ -34,11 +49,13 @@ const Compare = () => {
                     (
                         <div>
                             <MovieDetail movie={allmovies[0]}></MovieDetail>
-                            {
-                                allmovies.map((movie, index) => (
-                                    <MovieProvider name={movie.provider} price={movie.price} key={index} />
-                                ))
-                            }
+                            <div className='movieProvider_container'>
+                                {
+                                    allmovies.map((movie, index) => (
+                                        <MovieProvider name={movie.provider} price={movie.price} key={index} />
+                                    ))
+                                }
+                            </div>
                         </div>
 
                     ) :
