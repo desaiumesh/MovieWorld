@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# Movie World
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movie World is a TypeScript-based React application that allows users to browse a list of movies and compare prices from different providers. It fetches movie data from an endpoint to display the cheapest movies initially, and upon selecting a movie, it calls another API to fetch detailed information and price comparisons from various providers.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Displays a list of movies and prices fetched from an endpoint.
+- Allows users to click on a movie to view more detailed information and compare prices from different providers.
+- Utilizes TypeScript for type safety and better code organization.
+- Uses React for building interactive user interfaces.
+- Fetches data from external APIs to provide real-time information to users.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/desaiumesh/MovieWorld
 
-- Configure the top-level `parserOptions` property like this:
+2. Navigate to the project directory:
+   ```bash
+   cd MovieWorld
+   
+3. Install dependencies:
+   ```bash
+   npm install
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Usage
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Start the development server:
+   ```bash
+   npm run dev
+2. Open your browser and navigate to http://localhost:5173 to view the application.
+
+### Dependencies
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A statically typed superset of JavaScript that compiles to plain JavaScript.
+- **Axios**: A promise-based HTTP client for making HTTP requests.
+- **React Router**: A library for adding routing to React applications.
+
+### API Endpoints
+- **/api/cheapest**: Endpoint for fetching a list of cheapest movies with details and prices.
+- **/api/movie/{title}**: Endpoint for fetching list of movies from different providers matching movie title.
+
+
